@@ -1,0 +1,44 @@
+CREATE TABLE EMPLOYEES (
+    EMP_ID NUMBER PRIMARY KEY,
+    EMP_NAME VARCHAR2(50),
+    DEPT_ID NUMBER,
+    SALARY NUMBER
+);
+
+--insert
+-- Insert a new employee into the EMPLOYEES table
+INSERT INTO EMPLOYEES (EMP_ID, EMP_NAME, DEPT_ID, SALARY) 
+VALUES (1, 'John Doe', 101, 5000);
+
+INSERT INTO EMPLOYEES (EMP_ID, EMP_NAME, DEPT_ID, SALARY) 
+VALUES (2, 'Jane Smith', 102, 5500);
+
+INSERT INTO EMPLOYEES (EMP_ID, EMP_NAME, DEPT_ID, SALARY) 
+VALUES (3, 'Sam Brown', 103, 6000);
+
+-- Commit the transaction to save the changes
+COMMIT;
+
+--update
+-- Update salary for employee with EMP_ID = 1
+UPDATE EMPLOYEES
+SET SALARY = 5200
+WHERE EMP_ID = 1;
+
+-- Update department for employee with EMP_ID = 3
+UPDATE EMPLOYEES
+SET DEPT_ID = 104
+WHERE EMP_ID = 3;
+
+-- Commit the transaction to save the changes
+COMMIT;
+
+--delete
+-- Delete the employee with EMP_ID = 2
+DELETE FROM EMPLOYEES
+WHERE EMP_ID = 2;
+
+-- Commit the transaction to save the changes
+COMMIT;
+
+SELECT * FROM EMPLOYEES;

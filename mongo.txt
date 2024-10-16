@@ -1,0 +1,26 @@
+CREATE COLLECTION
+
+db.createcollection("info")
+
+INSERT DATA
+
+db.info.insertOne({ name: "John", age: 25, city: "New York" })
+db.myCollection.insertMany([
+  { name: "Alice", age: 30, city: "Paris" },
+  { name: "Bob", age: 22, city: "London" }
+])
+
+
+READ DATA
+db.myCollection.find()  # Retrieve all documents
+db.myCollection.find({ age: { $gt: 25 } })
+
+
+UPDATE DATA
+db.myCollection.updateOne({ name: "John" }, { $set: { age: 26 } })
+db.myCollection.updateMany({ city: "London" }, { $set: { city: "Berlin" } })
+
+
+DELETE DATA
+db.myCollection.deleteOne({ name: "Alice" })
+db.myCollection.deleteMany({ city: "Berlin" })

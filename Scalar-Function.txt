@@ -1,0 +1,16 @@
+Roll_No	name	percentage
+4	James Hoog	56.78
+5	Nail Knite	70.12
+7	Pit Alex	85.45
+22	Mc Lyon	90.23
+43	Paul Adam	34.56
+6	Lauson Hen	76.45
+
+
+SELECT UCASE(name) FROM student;
+SELECT LCASE(name) FROM student;
+SELECT MID(name,1,4) FROM student;
+SELECT LENGTH(name) FROM student;
+SELECT  ROUND(marks,0) FROM student;
+SELECT  name, NOW() AS DateTime FROM student;
+SELECT  name,   FORMAT(NOW(),’YYYY-MM-DD’)AS Date  FROM student;

@@ -1,0 +1,19 @@
+CREATE OR REPLACE PROCEDURE GREET_USER (
+    p_name IN VARCHAR2  -- Input parameter for the user's name
+) AS
+BEGIN
+    -- Output a greeting message using the input name
+    DBMS_OUTPUT.PUT_LINE('Hello, ' || p_name || '! Welcome to PL/SQL.');
+END;
+/
+-- Call the procedure to greet a user named 'John'
+BEGIN
+    GREET_USER('John');
+END;
+/
+
+-- Call the procedure to greet a user named 'Alice'
+BEGIN
+    GREET_USER('Alice');
+END;
+/

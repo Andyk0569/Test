@@ -1,0 +1,48 @@
+CREATE TABLE EMPLOYEES (
+    EMP_ID NUMBER PRIMARY KEY,
+    EMP_NAME VARCHAR2(50),
+    SALARY NUMBER
+);
+
+
+INSERT INTO EMPLOYEES (EMP_ID, EMP_NAME, SALARY) 
+VALUES (1, 'John Doe', 5000);
+
+INSERT INTO EMPLOYEES (EMP_ID, EMP_NAME, SALARY) 
+VALUES (2, 'Jane Smith', 5500);
+
+INSERT INTO EMPLOYEES (EMP_ID, EMP_NAME, SALARY) 
+VALUES (3, 'Sam Wilson', 6000);
+
+COMMIT;
+
+
+DECLARE
+    
+    CURSOR emp_cursor IS
+        SELECT EMP_NAME, SALARY
+        FROM EMPLOYEES;
+        
+  
+    v_emp_name EMPLOYEES.EMP_NAME%TYPE;
+    v_salary EMPLOYEES.SALARY%TYPE;
+BEGIN
+    
+    OPEN emp_cursor;
+    
+    
+    LOOP
+        
+        FETCH emp_cursor INTO v_emp_name, v_salary;
+        
+      
+        EXIT WHEN emp_cursor%NOTFOUND;
+        
+        
+        DBMS_OUTPUT.PUT_LINE('Employee: ' || v_emp_name || ', Salary: ' || v_salary);
+    END LOOP;
+    
+    
+    CLOSE emp_cursor;
+END;
+/

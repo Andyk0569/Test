@@ -1,0 +1,29 @@
+CREATE TABLE Employee( 
+  employee_id NUMBER(4) PRIMARY KEY,
+  first_name VARCHAR2(50),
+  last_name VARCHAR2(50), 
+  last_modified TIMESTAMP
+);
+
+
+CREATE OR REPLACE TRIGGER update_last_modified
+BEFORE UPDATE ON employee
+FOR EACH ROW
+BEGIN
+:NEW.last_modified:=SYSTIMESTAMP;
+END;
+/
+
+-- Step 1: Insert a new record (No trigger fired)
+INSERT INTO employee (employee_id, first_name, last_name, last_modified)
+VALUES (1, 'John', 'Doe', NULL);
+
+-- Step 2: Update the record (Trigger fired)
+UPDATE employee
+SET first_name = 'Johnny'
+WHERE employee_id = 1;
+
+-- Step 3: Select the updated record to verify the last_modified field
+SELECT employee_id, first_name, last_name, last_modified
+FROM employee
+WHERE employee_id = 1;
